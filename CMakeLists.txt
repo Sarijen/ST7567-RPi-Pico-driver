@@ -14,6 +14,5 @@ target_include_directories(ST7567
 )
 
 target_compile_features(ST7567 PRIVATE
-  c_std_11
   cxx_std_20
 )
