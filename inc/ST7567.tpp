@@ -78,6 +78,13 @@ void ST7567<Board>::plotPixel(uint8_t x, uint8_t y) {
 
 
 template<typename Board>
+void ST7567<Board>::flip(bool horizontally, bool vertically) {
+  sendCommand(horizontally ? COM_DIR_REVERSE : COM_DIR_NORMAL);
+  sendCommand(vertically ? SEG_DIR_REVERSE : SEG_DIR_NORMAL);
+}
+
+
+template<typename Board>
 void ST7567<Board>::setContrast(uint8_t EVvalue, uint8_t RegRatioValue) {
   if (EVvalue > MAX_EV_VALUE) {EVvalue = MAX_EV_VALUE;}
   if (RegRatioValue > MAX_RR_VALUE) {RegRatioValue = MAX_RR_VALUE;}
@@ -157,9 +164,9 @@ void ST7567<Board>::init() {
   );
   Board::delay_us(50);
 
-  constexpr uint8_t EV_value = 18; // 21
-  constexpr uint8_t RR_value = 5; // 4
-  setContrast(EV_value, RR_value);
+  constexpr uint8_t defaultEVvalue = 18;
+  constexpr uint8_t defaultRRvalue = 5;
+  setContrast(defaultEVvalue, defaultRRvalue);
 
   sendCommand(SET_START_LINE);
   sendCommand(DISPLAY_ON);

@@ -30,6 +30,7 @@ class ST7567 {
     void hardwareReset();
 
     void setContrast(uint8_t EVvalue, uint8_t RegRatioValue);
+    void flip(bool horizontally, bool vertically);
 
     void sendFramebuffer();
     void clearFramebuffer();

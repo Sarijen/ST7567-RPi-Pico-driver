@@ -70,17 +70,17 @@ int main() {
   gpio_init(DC_PIN);
   gpio_init(CS_PIN);
   gpio_init(RST_PIN);
-  gpio_init(LED);
+  gpio_init(BACKLIGHT_PIN);
 
   gpio_set_dir(DC_PIN, GPIO_OUT);
   gpio_set_dir(CS_PIN, GPIO_OUT);
   gpio_set_dir(RST_PIN, GPIO_OUT);
-  gpio_set_dir(LED, GPIO_OUT);
+  gpio_set_dir(BACKLIGHT_PIN, GPIO_OUT);
 
   gpio_put(CS_PIN, GPIO_HIGH); 
   gpio_put(DC_PIN, GPIO_LOW);
   gpio_put(RST_PIN, GPIO_HIGH);
-  gpio_put(LED, GPIO_HIGH);
+  gpio_put(BACKLIGHT_PIN, GPIO_HIGH);
 
   spi_init(SPI_ID, sclk_freq);
 
