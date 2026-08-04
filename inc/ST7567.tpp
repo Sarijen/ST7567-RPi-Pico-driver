@@ -47,6 +47,20 @@ void ST7567<Board>::drawImage(uint8_t x, uint8_t y, uint8_t width, uint8_t heigh
   }
 }
 
+template<typename Board>
+void ST7567<Board>::drawFilledRectangle(uint8_t x, uint8_t y, uint8_t width, uint8_t height) {
+  if (x > WIDTH || y > HEIGHT) {return;}
+
+  uint8_t dx = x + width;
+  uint8_t dy = y + height;
+
+  for (uint8_t i = x; i < dx; i++) {
+    for (uint8_t j = y; j < dy; j++) {
+      plotPixel(i, j);
+    }       //  x  y
+  }
+}
+
 
 template<typename Board>
 void ST7567<Board>::drawRectangle(uint8_t x, uint8_t y, uint8_t width, uint8_t height) {

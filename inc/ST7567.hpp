@@ -37,6 +37,7 @@ class ST7567 {
 
     void plotPixel(uint8_t x, uint8_t y);
     void drawRectangle(uint8_t x, uint8_t y, uint8_t width, uint8_t height);
+    void drawFilledRectangle(uint8_t x, uint8_t y, uint8_t width, uint8_t height);
 
     void drawImage(uint8_t x, uint8_t y, uint8_t width, uint8_t height, span<const uint8_t> image);
     void drawString(uint8_t x, uint8_t y, font_table font, string str);

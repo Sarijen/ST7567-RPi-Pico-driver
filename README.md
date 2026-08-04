@@ -10,7 +10,7 @@ More details in the [datasheet](https://www.laskakit.cz/user/related_files/st756
 ### Driver features
 - Portable to any MCU platform
 - Drawing any pixel in the 128x64 buffer
-- 5x8, 10x16 and custom fonts  
+- Bitmap fonts 5x8, 10x16 and custom support
 - Bitmap images (Vim logo shown in the preview)
 - Setting display properties like contrast
 
