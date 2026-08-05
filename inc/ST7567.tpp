@@ -92,21 +92,9 @@ void ST7567<Board>::plotPixel(uint8_t x, uint8_t y) {
 
 
 template<typename Board>
-void ST7567<Board>::flip(bool horizontally, bool vertically) {
-  sendCommand(horizontally ? COM_DIR_REVERSE : COM_DIR_NORMAL);
-  sendCommand(vertically ? SEG_DIR_REVERSE : SEG_DIR_NORMAL);
+void ST7567<Board>::clearFramebuffer() {
+  framebuffer.fill(0);
 }
-
-
-template<typename Board>
-void ST7567<Board>::setContrast(uint8_t EVvalue, uint8_t RegRatioValue) {
-  if (EVvalue > MAX_EV_VALUE) {EVvalue = MAX_EV_VALUE;}
-  if (RegRatioValue > MAX_RR_VALUE) {RegRatioValue = MAX_RR_VALUE;}
-
-  sendCommand(REGULATION_RATIO | RegRatioValue);
-  sendCommand(EV_ADJUST);
-  sendCommand(EV_SET | EVvalue);
-};
 
 
 template<typename Board>
@@ -130,9 +118,27 @@ void ST7567<Board>::sendFramebuffer() {
 
 
 template<typename Board>
-void ST7567<Board>::clearFramebuffer() {
-  framebuffer.fill(0);
+void ST7567<Board>::invertDisplayColor(bool invert) {
+  sendCommand(INVERSE_DISPLAY | invert);
 }
+
+
+template<typename Board>
+void ST7567<Board>::flip(bool horizontally, bool vertically) {
+  sendCommand(horizontally ? COM_DIR_REVERSE : COM_DIR_NORMAL);
+  sendCommand(vertically ? SEG_DIR_REVERSE : SEG_DIR_NORMAL);
+}
+
+
+template<typename Board>
+void ST7567<Board>::setContrast(uint8_t EVvalue, uint8_t RegRatioValue) {
+  if (EVvalue > MAX_EV_VALUE) {EVvalue = MAX_EV_VALUE;}
+  if (RegRatioValue > MAX_RR_VALUE) {RegRatioValue = MAX_RR_VALUE;}
+
+  sendCommand(REGULATION_RATIO | RegRatioValue);
+  sendCommand(EV_ADJUST);
+  sendCommand(EV_SET | EVvalue);
+};
 
 
 template<typename Board>

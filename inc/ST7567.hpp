@@ -31,6 +31,7 @@ class ST7567 {
 
     void setContrast(uint8_t EVvalue, uint8_t RegRatioValue);
     void flip(bool horizontally, bool vertically);
+    void invertDisplayColor(bool inverted);
 
     void sendFramebuffer();
     void clearFramebuffer();
@@ -48,6 +49,7 @@ class ST7567 {
     static constexpr uint8_t DISPLAY_OFF =            0b10101110;
     static constexpr uint8_t DISPLAY_ON =             DISPLAY_OFF | 0b1;
     static constexpr uint8_t SET_START_LINE =         0b01000000;
+    static constexpr uint8_t SOFTWARE_RESET =         0b11100010;
 
     static constexpr uint8_t SET_PAGE_ADDR =          0b10110000;
     static constexpr uint8_t SET_COL_ADDR_HIGH =      0b00010000;
@@ -55,16 +57,13 @@ class ST7567 {
 
     static constexpr uint8_t SEG_DIR_NORMAL =         0b10100000;
     static constexpr uint8_t SEG_DIR_REVERSE =        SEG_DIR_NORMAL | 0b1;
-    static constexpr uint8_t INVERSE_DISPLAY_OFF =    0b10100110;
-    static constexpr uint8_t INVERSE_DISPLAY_ON =     INVERSE_DISPLAY_OFF | 0b1;
+    static constexpr uint8_t COM_DIR_NORMAL =         0b11000000;
+    static constexpr uint8_t COM_DIR_REVERSE =        COM_DIR_NORMAL | 0b1000;
 
     static constexpr uint8_t ALL_PIXEL_OFF =          0b10100100;
     static constexpr uint8_t ALL_PIXEL_ON =           ALL_PIXEL_OFF | 0b1;
     static constexpr uint8_t BIAS_SELECT =            0b10100011;   
-
-    static constexpr uint8_t SOFTWARE_RESET =         0b11100010;
-    static constexpr uint8_t COM_DIR_NORMAL =         0b11000000;
-    static constexpr uint8_t COM_DIR_REVERSE =        COM_DIR_NORMAL | 0b1000;
+    static constexpr uint8_t INVERSE_DISPLAY =        0b10100110;
 
     static constexpr uint8_t POWER_CONTROL =          0b00101000;
     static constexpr uint8_t Booster_ON   =           0b00000100;
