@@ -1,3 +1,5 @@
+[![.github/workflows/pico-build.yml](https://github.com/Sarijen/ST7567-RPi-Pico-driver/actions/workflows/pico-build.yml/badge.svg?label=pica)](https://github.com/Sarijen/ST7567-RPi-Pico-driver/actions/workflows/pico-build.yml)
+
 # About the IC
 ST7567 is a monochrome graphic controller designed for STN/FSTN dot-matrix LCDs. Integrates display RAM (65 × 132 bits), contrast control, segment/common drivers, oscillator, and LCD voltage generation circuit.
 Supported interfaces: 4-wire SPI, 8080, and 6800 parralel
