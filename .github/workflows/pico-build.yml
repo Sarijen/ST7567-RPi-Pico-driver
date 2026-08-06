@@ -1,0 +1,28 @@
+on:
+  push:
+  pull_request:
+
+jobs:
+  pico_build:
+    name: Build Pico Platform
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Pico Platform
+        id: build
+        uses: samyarsadat/Pico-Build-Action@v1
+        with:
+          source_dir: "platform/raspberrypi-pico"
+          cmake_args: "-DCMAKE_BUILD_TYPE=Debug"
+
+      - name: Upload Build Artifacts
+        if: ${{ !env.ACT }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{steps.build.outputs.output_dir}}
